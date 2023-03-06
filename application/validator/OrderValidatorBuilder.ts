@@ -1,4 +1,5 @@
 import OrderValidator from './OrderValidator';
+import ValidateOrderType from './ValidateOrderType';
 import ValidateRefundOrderRequest from './ValidateRefundOrderRequest';
 import ValidateSalesOrderRequest from './ValidateSalesOrderRequest';
 import ValidateStockForSalesOrder from './ValidateStockForSalesOrder';
@@ -12,6 +13,7 @@ export default class OrderValidatorBuilder {
     const salesOrderValidator = new ValidateSalesOrderRequest(
       refundOrderValidator
     );
-    return salesOrderValidator;
+    const orderTypeValidator = new ValidateOrderType(salesOrderValidator);
+    return orderTypeValidator;
   }
 }
